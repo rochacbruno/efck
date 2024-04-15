@@ -12,11 +12,11 @@ logger = logging.getLogger(__name__)
 
 def type_chars(text: str, force_clipboard):
     TYPEOUT_COMMANDS = (
-        (IS_X11, ['xdotool', 'type', text]),
-        (IS_X11 or IS_WAYLAND, ['ydotool', 'type', '--next-delay', '0', '--key-delay', '0', text]),
-        (IS_X11 or IS_WAYLAND, ['wtype', text]),
-        (IS_MACOS, lambda: _type_macos(text)),
-        (IS_WIDOWS, lambda: _type_windos(text))
+        # (IS_X11, ['xdotool', 'type', text]),
+        # (IS_X11 or IS_WAYLAND, ['ydotool', 'type', '--next-delay', '0', '--key-delay', '0', text]),
+        (IS_X11 or IS_WAYLAND, ['copyq', 'add', text]),
+        # (IS_MACOS, lambda: _type_macos(text)),
+        # (IS_WIDOWS, lambda: _type_windos(text))
     )
     once = False
     res = -1  # 0/Falsy = success
